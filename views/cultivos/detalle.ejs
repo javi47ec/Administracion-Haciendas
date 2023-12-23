@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Detalles de Cultivos</title>
+    <style>
+        body {
+            background-color: #f8f9fa; /* Color de fondo suave */
+        }
+
+        .container {
+            margin-top: 50px; /* Ajuste de margen superior */
+        }
+
+        h1 {
+            color: #007bff; /* Color del encabezado */
+        }
+
+        strong {
+            color: #495057; /* Color del texto fuerte */
+        }
+
+        p {
+            color: #6c757d; /* Color del texto de párrafo */
+        }
+    </style>
+</head>
+<body class="container mt-5">
+
+    <div class="container d-flex flex-column align-items-center justify-content-center">
+        <div class="card text-center" style="max-width: 50rem;">
+            <div class="card-body">
+    <h1 class="text-center">Detalle de Cultivo</h1>
+
+    <p class="card-text"><strong>Nombre:</strong> <%= cultivo.nombre %></p>
+    <p class="card-text"><strong>Fecha de siembra:</strong> <%= new Date(cultivo.fechaSiembra).toLocaleDateString('es-ES') %></p>
+    <p class="card-text"><strong>Fecha de cosecha:</strong> <%= new Date(cultivo.fechaCosecha).toLocaleDateString('es-ES') %></p>
+    <p class="card-text"><strong>Estado:</strong> <%= cultivo.estado %></p>
+    <p class="card-text"><strong>Hacienda:</strong> <%= obtenerNombreHacienda(cultivo.hacienda, haciendas) %></p>
+    <p class="card-text"><strong>Parcela:</strong> <%= obtenerNombreParcela(cultivo.parcela, parcelas) %></p>
+    <br>
+
+    <a href="/cultivos" class="btn btn-secondary">Volver</a>
+
+    </div>
+    </div>
+    </div>
+    <!-- Agrega las siguientes referencias a Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-GLhlTQ8iKuO7u6z6D5s3HYBUvAz/BYB1KAIdB+q3GGOpDIIl+VdYU5f5iJq4meM" crossorigin="anonymous"></script>
+
+    <% function obtenerNombreHacienda(haciendaId, haciendas) { 
+        const hacienda = haciendas.find(h => h._id.toString() === haciendaId.toString());
+        return hacienda ? hacienda.nombre : 'No disponible';
+      } %>
+
+<% function obtenerNombreParcela(parcelaId, parcelas) { 
+    if (parcelaId) {
+        const parcela = parcelas.find(p => p._id.toString() === parcelaId.toString());
+        return parcela ? parcela.nombre : 'No disponible';
+    } else {
+        return 'No disponible';
+    }
+} %>
+
+</body>
+</html>

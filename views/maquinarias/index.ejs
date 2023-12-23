@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Maquinarias</title>
+</head>
+<body class="container mt-5">
+
+    <h1>Maquinarias</h1>
+
+    <button type="button" class="btn btn-success">
+        <a href="/maquinarias/nueva" class="btn btn-success">Crear Nueva Maquinaria</a>
+    </button>
+    <br>
+    <br>
+
+    <table class="table table-secondary">
+        <thead>
+            <tr class="table-primary">
+                <th>Nombre</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% maquinarias.forEach(maquinaria => { %>
+                <tr>
+                    <td><%= maquinaria.nombre %></td>
+                    <td><%= maquinaria.marca %></td>
+                    <td><%= maquinaria.modelo %></td>
+                    <td><%= maquinaria.estado %></td>
+                    <td>
+                       
+                       
+                        <a href="/maquinarias/<%= maquinaria._id %>" class="btn btn-info">
+                            <i class="fas fa-eye"></i> Ver
+                        </a>
+                    
+                        <!-- Botón de Editar -->
+                      
+                        <a href="/maquinarias/editar/<%= maquinaria._id %>" class="btn btn-secondary" style="font-size: 18px; color: #ffffff; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
+                            <i class="fas fa-pencil-alt"></i> Editar
+                        </a>
+                    
+                        
+                        <!-- Formulario para la acción de Eliminar -->
+                        <form id="deleteForm_<%= maquinaria._id %>" action="/maquinarias/eliminar/<%= maquinaria._id %>" method="post" style="display:inline;">
+                            <button type="button" class="btn btn-danger" onclick="confirmDelete('<%= maquinaria._id %>')" style="color: #ffffff; background-color: #dc3545; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
+                                <i class="fas fa-trash"></i> Eliminar
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+
+    <button type="button" class="btn btn-secondary">
+        <a href="/" style="color: white; text-decoration: none;">Volver a Inicio</a>
+    </button>
+
+    <script>
+        function confirmDelete(id) {
+            let choice = confirm('¿Está seguro que desea eliminar esta maquinaria?');
+
+            if (choice) {
+                document.querySelector('#deleteForm_' + id).submit();
+            }
+        }
+
+    </script>
+    
+</body>
+</html>

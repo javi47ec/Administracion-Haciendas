@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacienda Napoles</title>
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            background-image: url('/imagenes/fondo.png'); /* Cambia la ruta a tu imagen de fondo */
+            background-size: cover; /* Ajusta el tamaño de la imagen para cubrir toda la pantalla */
+            background-position: center; /* Centra la imagen */
+            background-repeat: no-repeat; /* Evita que la imagen se repita */
+            height: 100vh; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-family: 'Arial', sans-serif ; /* Cambia el tipo de letra */
+            font-size: 2em; /* Ajusta el tamaño del texto según sea necesario */
+            margin: 0;
+            padding: 0;
+            color: #68da81;
+        }
+        
+       
+
+        .dashboard-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start; /* Alinea los elementos en la parte superior */
+            padding: 2em;
+            width: 100%;
+            box-sizing: border-box;
+            flex-grow: 1; /* Hace que el contenedor crezca para ocupar el espacio restante */
+        }
+
+        .dashboard-item {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1em;
+            text-align: center;
+            width: 200px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 1em;
+            transition: transform 0.3s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Personalizar colores para cada tarjeta */
+        .dashboard-item:nth-child(1) {
+            background-color: #8fcfd1;
+        }
+
+        .dashboard-item:nth-child(2) {
+            background-color: #ffc107;
+        }
+
+        .dashboard-item:nth-child(3) {
+            background-color: #fd7e14;
+        }
+
+        .dashboard-item:nth-child(4) {
+            background-color: #28a745;
+        }
+
+        .dashboard-item:nth-child(5) {
+            background-color: #007bff;
+        }
+
+        .dashboard-item:hover {
+            transform: scale(1.05);
+        }
+
+        .dashboard-item a {
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bienvenido a la Hacienda Villa Ganadera Los Pinos</h1>
+    </header>
+
+    <div class="dashboard-container">
+        <div class="dashboard-item" style="background-image: url('/imagenes/hacienda.jpg'); color: #fff;">
+            <h2>Hacienda</h2>
+            <a href="/haciendas" style="color: #fff;">Ver haciendas</a>
+        </div>
+        
+        <div class="dashboard-item" style="background-image: url('/imagenes/empleado.jpg'); color: #fff;">
+            <h2>Empleados</h2>
+            <a href="/empleados" style="color: #fff;">Ver empleados</a>
+        </div>
+
+        <div class="dashboard-item" style="background-image: url('/imagenes/animales.jpg'); color: #fff;">
+            <h2>Animales</h2>
+            <a href="/animales" style="color: #fff;">Ver animales</a>
+        </div>
+
+        <div class="dashboard-item" style="background-image: url('/imagenes/cultivos.jpg'); color: #fff;">
+            <h2>Cultivos</h2>
+            <a href="/cultivos" style="color: #fff;">Ver cultivos</a>
+        </div>
+
+        <div class="dashboard-item" style="background-image: url('/imagenes/parcelas.jpg'); color: #fff;">
+            <h2>Parcelas</h2>
+            <a href="/parcelas" style="color: #fff;">Ver parcelas</a>
+        </div>
+
+        <div class="dashboard-item" style="background-image: url('/imagenes/maquinaria.jpg'); color: #fff;">
+            <h2>Maquinaria</h2>
+            <a href="/maquinarias" style="color: #fff;">Ver maquinarias</a>
+        </div>  
+    </div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Haciendas</title>
+</head>
+<body class="container mt-5">
+    
+<h1>Listado de Haciendas</h1>
+
+<button type="button" class="btn btn-success">
+    <a href="/haciendas/nueva" class="btn btn-success">Crear Nueva Hacienda</a></button>
+<br>
+<br>
+<table class="table table-active">
+    <thead>
+        <tr class="table-dark">
+            <th>Nombre</th>
+            <th>Dirección</th>
+            <th>Email</th>
+            <th>Teléfono</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% haciendas.forEach(function(hacienda){ %>
+            <tr>
+                <td><%= hacienda.nombre %></td>
+                <td><%= hacienda.direccion %></td>
+                <td><%= hacienda.email %></td>
+                <td><%= hacienda.telefono %></td>
+                <td>
+                    <!-- Botón de Ver en Modal -->
+                   
+                    <a href="/haciendas/<%= hacienda._id %>" class="btn btn-info">
+                        <i class="fas fa-eye"></i> Ver
+                    </a>
+                
+                    <!-- Botón de Editar -->
+                  
+                    <a href="/haciendas/editar/<%= hacienda._id %>" class="btn btn-secondary" style="font-size: 18px; color: #ffffff; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
+                        <i class="fas fa-pencil-alt"></i> Editar
+                    </a>
+                
+                    
+                    <!-- Formulario para la acción de Eliminar -->
+                    <form id="deleteForm_<%= hacienda._id %>" action="/haciendas/eliminar/<%= hacienda._id %>" method="post" style="display:inline;">
+                        <button type="button" class="btn btn-danger" onclick="confirmDelete('<%= hacienda._id %>')" style="color: #ffffff; background-color: #dc3545; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
+                            <i class="fas fa-trash"></i> Eliminar
+                        </button>
+                    </form>
+                </td>
+        
+            </tr>
+        <% }); %>
+    </tbody>
+</table>
+
+<button type="button" class="btn btn-secondary">
+    <a href="/" style="color: white; text-decoration: none;">Volver a Inicio</a>
+</button>
+
+<script>
+    function confirmDelete(haciendaId) {
+        // Utiliza la función confirm para mostrar un cuadro de diálogo
+        if (confirm('¿Estás seguro de que quieres eliminar este registro?')) {
+            // Si el usuario hace clic en "Aceptar", envía el formulario
+            document.getElementById('deleteForm_' + haciendaId).submit();
+        }
+    }
+</script>
+    
+<!-- Agrega las siguientes referencias a Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-GLhlTQ8iKuO7u6z6D5s3HYBUvAz/BYB1KAIdB+q3GGOpDIIl+VdYU5f5iJq4meM" crossorigin="anonymous"></script>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Detalle de Hacienda</title>
+</head>
+<body>
+    <div class="container mt-5 d-flex flex-column align-items-center justify-content-center">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Detalle de Hacienda</h5>
+                <p class="card-text"><strong>Nombre:</strong> <%= hacienda.nombre %></p>
+                <p class="card-text"><strong>Dirección:</strong> <%= hacienda.direccion %></p>
+                <p class="card-text"><strong>Teléfono:</strong> <%= hacienda.telefono %></p>
+                <p class="card-text"><strong>Email:</strong> <%= hacienda.email %></p>
+                <a href="/haciendas" class="btn btn-primary">Volver</a>
+                 <a href="#" class="btn btn-secondary">Imprimir</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
